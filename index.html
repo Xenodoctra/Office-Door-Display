@@ -19,6 +19,7 @@
       --lunch: #eab308;
       --meeting: #a855f7;
       --day: #ef4444;
+      --custom: #38bdf8;
     }
 
     * {
@@ -50,7 +51,7 @@
       padding: 34px;
       box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
       display: grid;
-      grid-template-rows: auto auto 1fr auto;
+      grid-template-rows: auto auto 1fr auto auto;
       gap: 24px;
       position: relative;
     }
@@ -132,6 +133,11 @@
       border-color: var(--day);
     }
 
+    .status.custom {
+      background: #082f49;
+      border-color: var(--custom);
+    }
+
     .main {
       display: grid;
       grid-template-columns: 0.9fr 1.35fr;
@@ -183,6 +189,32 @@
       font-weight: 800;
     }
 
+    .sync-note {
+      color: #64748b;
+      font-size: 0.85rem;
+      text-align: right;
+      padding-right: 72px;
+    }
+
+    .admin-button {
+      position: fixed;
+      right: 14px;
+      bottom: 10px;
+      background: transparent;
+      color: rgba(255, 255, 255, 0.18);
+      font-size: 0.8rem;
+      padding: 10px 12px;
+      border: none;
+      border-radius: 10px;
+      z-index: 10;
+      cursor: pointer;
+    }
+
+    .admin-button:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: rgba(255, 255, 255, 0.5);
+    }
+
     .editor {
       display: none;
       background: #020617;
@@ -204,7 +236,6 @@
       margin-bottom: 8px;
     }
 
-    select,
     input,
     textarea {
       width: 100%;
@@ -241,31 +272,6 @@
     button.secondary {
       background: #64748b;
       color: white;
-    }
-
-    .admin-button {
-      position: fixed;
-      right: 14px;
-      bottom: 10px;
-      background: transparent;
-      color: rgba(255, 255, 255, 0.18);
-      font-size: 0.8rem;
-      padding: 10px 12px;
-      border: none;
-      border-radius: 10px;
-      z-index: 10;
-    }
-
-    .admin-button:hover {
-      background: rgba(255, 255, 255, 0.08);
-      color: rgba(255, 255, 255, 0.5);
-    }
-
-    .footer {
-      color: #64748b;
-      font-size: 0.85rem;
-      text-align: right;
-      padding-right: 72px;
     }
 
     @media (max-width: 800px) {
@@ -326,20 +332,14 @@
     </section>
 
     <section class="message" id="message">
-      If I am away from the office, please text or call.
+      Loading door message...
     </section>
 
     <section class="editor" id="editor">
       <div class="editor-grid">
         <div>
           <label for="statusInput">Status</label>
-          <select id="statusInput">
-            <option value="available">Available</option>
-            <option value="out">Out</option>
-            <option value="lunch">Lunch</option>
-            <option value="meeting">Meeting</option>
-            <option value="day">Out for Day</option>
-          </select>
+          <input id="statusInput" type="text" placeholder="Example: available, meeting, Working Out" />
 
           <label for="messageInput">Optional Message</label>
           <input id="messageInput" type="text" placeholder="Example: Back at 1300. Text if urgent." />
@@ -352,13 +352,12 @@
       </div>
 
       <div class="button-row">
-        <button onclick="saveDisplay()">Save</button>
+        <button onclick="downloadJson()">Download updated data.json</button>
         <button class="secondary" onclick="hideEditor()">Cancel</button>
-        <button class="secondary" onclick="resetDisplay()">Reset</button>
       </div>
     </section>
 
-    <div class="footer">Use Admin button to edit.</div>
+    <div class="sync-note" id="syncNote">Checking data.json...</div>
   </main>
 
   <button class="admin-button" onclick="openAdmin()">Admin</button>
@@ -366,22 +365,19 @@
   <script>
     const ADMIN_CODE = "4774";
 
-    const defaultSchedule =
-`0800 - Available
-0900 - Office / Project Work
-1100 - Meeting / Admin
-1200 - Lunch
-1300 - Available
-1530 - Out`;
+    const defaultData = {
+      status: "available",
+      schedule: "0800 - Available\n0900 - Office / Project Work\n1100 - Meeting / Admin\n1200 - Lunch\n1300 - Available\n1530 - Out",
+      message: "If I am away from the office, please text or call."
+    };
 
-    const defaultMessage = "If I am away from the office, please text or call.";
-
-    const statusLabels = {
-      available: "Available",
-      out: "Out",
-      lunch: "Lunch",
-      meeting: "Meeting",
-      day: "Out for Day"
+    const knownStatuses = {
+      available: { label: "Available", className: "available" },
+      out: { label: "Out", className: "out" },
+      lunch: { label: "Lunch", className: "lunch" },
+      meeting: { label: "Meeting", className: "meeting" },
+      day: { label: "Out for Day", className: "day" },
+      "out for day": { label: "Out for Day", className: "day" }
     };
 
     const backupQuotes = [
@@ -393,6 +389,8 @@
       { text: "Small acts, done consistently, become identity.", author: "Unknown" },
       { text: "Discipline is choosing what you want most over what you want now.", author: "Unknown" }
     ];
+
+    let currentData = { ...defaultData };
 
     function setDate() {
       const now = new Date();
@@ -430,38 +428,62 @@
       }
     }
 
+    function normalizeStatus(statusValue) {
+      return String(statusValue || "available").trim().toLowerCase();
+    }
+
     function applyStatus(statusValue) {
       const statusBox = document.getElementById("statusBox");
-      statusBox.className = "status " + statusValue;
-      statusBox.textContent = statusLabels[statusValue] || "Available";
+      const normalized = normalizeStatus(statusValue);
+      const known = knownStatuses[normalized];
+
+      if (known) {
+        statusBox.className = "status " + known.className;
+        statusBox.textContent = known.label;
+      } else {
+        statusBox.className = "status custom";
+        statusBox.textContent = String(statusValue || "Available").trim();
+      }
     }
 
-    function loadDisplay() {
-      const savedStatus = localStorage.getItem("doorStatus") || "available";
-      const savedSchedule = localStorage.getItem("doorSchedule") || defaultSchedule;
-      const savedMessage = localStorage.getItem("doorMessage") || defaultMessage;
+    function applyData(data) {
+      currentData = {
+        status: data.status || defaultData.status,
+        schedule: data.schedule || defaultData.schedule,
+        message: data.message || defaultData.message
+      };
 
-      applyStatus(savedStatus);
+      applyStatus(currentData.status);
 
-      document.getElementById("schedule").textContent = savedSchedule;
-      document.getElementById("message").textContent = savedMessage;
+      document.getElementById("schedule").textContent = currentData.schedule;
+      document.getElementById("message").textContent = currentData.message;
 
-      document.getElementById("statusInput").value = savedStatus;
-      document.getElementById("scheduleInput").value = savedSchedule;
-      document.getElementById("messageInput").value = savedMessage;
+      document.getElementById("statusInput").value = currentData.status;
+      document.getElementById("scheduleInput").value = currentData.schedule;
+      document.getElementById("messageInput").value = currentData.message;
     }
 
-    function saveDisplay() {
-      const statusValue = document.getElementById("statusInput").value;
-      const scheduleValue = document.getElementById("scheduleInput").value;
-      const messageValue = document.getElementById("messageInput").value || defaultMessage;
+    async function loadDoorData() {
+      try {
+        const response = await fetch("data.json?cacheBust=" + Date.now());
 
-      localStorage.setItem("doorStatus", statusValue);
-      localStorage.setItem("doorSchedule", scheduleValue);
-      localStorage.setItem("doorMessage", messageValue);
+        if (!response.ok) {
+          throw new Error("Could not load data.json");
+        }
 
-      loadDisplay();
-      hideEditor();
+        const data = await response.json();
+        applyData(data);
+
+        const time = new Date().toLocaleTimeString("en-US", {
+          hour: "numeric",
+          minute: "2-digit"
+        });
+
+        document.getElementById("syncNote").textContent = "Updated from data.json at " + time;
+      } catch (error) {
+        applyData(currentData.status ? currentData : defaultData);
+        document.getElementById("syncNote").textContent = "Using saved/default data. Could not read data.json.";
+      }
     }
 
     function hideEditor() {
@@ -470,18 +492,8 @@
 
     function showEditor() {
       document.getElementById("editor").style.display = "block";
-      document.getElementById("scheduleInput").focus();
+      document.getElementById("statusInput").focus();
       document.getElementById("editor").scrollIntoView({ behavior: "smooth", block: "nearest" });
-    }
-
-    function resetDisplay() {
-      const confirmReset = confirm("Reset status, schedule, and message to defaults?");
-      if (!confirmReset) return;
-
-      localStorage.removeItem("doorStatus");
-      localStorage.removeItem("doorSchedule");
-      localStorage.removeItem("doorMessage");
-      loadDisplay();
     }
 
     function openAdmin() {
@@ -494,12 +506,37 @@
       }
     }
 
+    function downloadJson() {
+      const updatedData = {
+        status: document.getElementById("statusInput").value,
+        schedule: document.getElementById("scheduleInput").value,
+        message: document.getElementById("messageInput").value
+      };
+
+      const jsonText = JSON.stringify(updatedData, null, 2);
+      const blob = new Blob([jsonText], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "data.json";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      URL.revokeObjectURL(url);
+
+      alert("Downloaded data.json. Upload or paste this into GitHub to update the iPad.");
+    }
+
     setDate();
-    loadDisplay();
+    applyData(defaultData);
+    loadDoorData();
     loadInternetQuote();
 
     setInterval(setDate, 60 * 1000);
     setInterval(loadInternetQuote, 6 * 60 * 60 * 1000);
+    setInterval(loadDoorData, 30 * 1000);
   </script>
 </body>
 </html>
