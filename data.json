@@ -1,5 +1,5 @@
 {
-  "status": "Available",
-  "schedule": "0700 - Available\n0900 - Working Out\n1000 - Available\n1200 - Lunch\n1500 - Out",
-  "message": "If the door is closed, come on in."
+  "status": "Out",
+  "schedule": "Out",
+  "message": "If needed, please call or text."
 }
