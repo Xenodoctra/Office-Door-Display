@@ -1,5 +1,5 @@
 {
-  "status": "Out",
-  "schedule": "Out",
-  "message": "If needed, please call or text."
+  "status": "Available",
+  "schedule": "0730 Available\n 1130 Webex\n 1200 Lunch\n 1230 Available\n 1530 Out",
+  "message": "If door is shut, come on in"
 }
