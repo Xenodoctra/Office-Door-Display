@@ -28,6 +28,7 @@
     .day { background:#450a0a; border-color:var(--day); }
     .training { background:#172554; border-color:var(--training); }
     .unavailable { background:#334155; border-color:var(--unavailable); }
+    .vacation { background:#164e63;  border-color:var(--vacation); }
     .chief { background:#f8fafc; border-color:#fff; color:#020617; }
     .custom { background:#082f49; border-color:var(--accent); }
     .main { display:grid; grid-template-columns:.9fr 1.35fr; gap:24px; min-height:0; }
@@ -87,7 +88,7 @@
     };
 
     const knownStatuses = {
-      available:{label:"Available", className:"available"}, out:{label:"Out", className:"out"},
+      available:{label:"Available", className:"available"}, vacation:{label:"Vacation", className:"vacation"}, out:{label:"Out", className:"out"},
       lunch:{label:"Lunch", className:"lunch"}, meeting:{label:"Meeting", className:"meeting"},
       day:{label:"Out for Day", className:"day"}, "out for day":{label:"Out for Day", className:"day"},
       training:{label:"Training", className:"training"}, unavailable:{label:"Unavailable", className:"unavailable"},
@@ -198,6 +199,7 @@
       };
 
       currentData = merged;
+      
       const currentItem = findCurrentScheduleItem(merged.scheduleItems);
       const overrideEnabled = merged.override && merged.override.enabled === true;
 
