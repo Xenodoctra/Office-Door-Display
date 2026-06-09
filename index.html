@@ -251,7 +251,7 @@
 
       if (staleEnabled && !overrideEnabled) {
            document.getElementById("schedule").innerHTML =
-                `<span class="current-line">07:00 - 15:00  Out of Office</span>`;
+                `<span class="current-line">${escapeHtml(merged.staleSchedule || "07:00 - 15:00  Out of Office")}</span>`;
       } else {
            document.getElementById("schedule").innerHTML =
                 buildScheduleHtml(merged.scheduleItems, currentItem);
