@@ -1,7 +1,7 @@
 {
   "message": "Text or call if needed.",
   "urgent": false,
-  "trainingNote": "Training note: Be clear, calm, and brief on the radio.",
+  "trainingNote": "Do not just provide a problem, provide the solution for the problem.",
   "override": {
     "enabled": false,
     "status": "",
