@@ -11,29 +11,29 @@
     {
       "start": "07:00",
       "end": "09:00",
-      "status": "available",
-      "label": "Available"
+      "status": "Vacation",
+      "label": "Unavailable"
     },
     {
       "start": "09:00",
-      "end": "10:00",
-      "status": "meeting",
-      "label": "Meeting"
-    },
-    {
-      "start": "10:00",
       "end": "12:00",
       "status": "available",
       "label": "Available"
     },
     {
       "start": "12:00",
-      "end": "13:00",
+      "end": "12:30",
       "status": "lunch",
       "label": "Lunch"
     },
     {
-      "start": "13:00",
+      "start": "12:30",
+      "end": "14:00",
+      "status": "available",
+      "label": "Available"
+    },
+    {
+      "start": "14:00",
       "end": "15:00",
       "status": "chief",
       "label": "Meeting with Fire Chief"
