@@ -88,7 +88,8 @@
     };
 
     const knownStatuses = {
-      available:{label:"Available", className:"available"}, vacation:{label:"Vacation", className:"vacation"}, out:{label:"Out", className:"out"},
+      available:{label:"Available", className:"available"}, vacation:{label:"Vacation", className:"vacation"}, 
+      outofofficeforday:{label:"Out of Office for Day", className:"day"}, out:{label:"Out", className:"out"},
       lunch:{label:"Lunch", className:"lunch"}, meeting:{label:"Meeting", className:"meeting"},
       day:{label:"Out for Day", className:"day"}, "out for day":{label:"Out for Day", className:"day"},
       training:{label:"Training", className:"training"}, unavailable:{label:"Unavailable", className:"unavailable"},
@@ -147,10 +148,43 @@
       const now = new Date();
       return now.getHours() * 60 + now.getMinutes();
     }
+     
+     function todayKey() {
+       const now = new Date();
+       const year = now.getFullYear();
+       const month = String(now.getMonth() + 1).padStart(2, "0");
+       const day = String(now.getDate()).padStart(2, "0");
 
-    function normalizeStatus(statusValue) {
-      return String(statusValue || "available").trim().toLowerCase();
-    }
+       return `${year}-${month}-${day}`;
+     }
+
+     function isWeekend() {
+       const day = new Date().getDay();
+       return day === 0 || day === 6;
+     }
+
+     function isDataStale(data) {
+       if (!data.displayDate) return false;
+       if (isWeekend()) return false;
+
+       const staleAfter = data.staleAfter || "10:00";
+       const staleMinutes = timeToMinutes(staleAfter);
+
+       if (staleMinutes === null) return false;
+
+       const dateIsOld = data.displayDate !== todayKey();
+       const itIsAfterStaleTime = nowInMinutes() >= staleMinutes;
+
+       return dateIsOld && itIsAfterStaleTime;
+     }
+    
+     function normalizeStatus(statusValue) {
+       return String(statusValue || "available")
+            .trim()
+            .toLowerCase()
+            .replaceAll(" ", "")
+            .replaceAll("-", "");
+     }
 
     function applyStatus(statusValue) {
       const statusBox = document.getElementById("statusBox");
@@ -202,18 +236,26 @@
       
       const currentItem = findCurrentScheduleItem(merged.scheduleItems);
       const overrideEnabled = merged.override && merged.override.enabled === true;
+      const staleEnabled = isDataStale(merged);
 
       if (overrideEnabled) {
-        applyStatus(merged.override.status || "unavailable");
+           applyStatus(merged.override.status || "unavailable");
+      } else if (staleEnabled) {
+           applyStatus(merged.staleStatus || "outOfOfficeForDay");
       } else if (currentItem) {
-        applyStatus(currentItem.status || currentItem.label || "unavailable");
+           applyStatus(currentItem.status || currentItem.label || "unavailable");
       } else {
-        applyStatus("out");
+           applyStatus("out");
       }
 
       document.getElementById("schedule").innerHTML = buildScheduleHtml(merged.scheduleItems, currentItem);
 
-      const messageText = overrideEnabled && merged.override.message ? merged.override.message : (merged.message || defaultData.message);
+     const messageText =
+          overrideEnabled && merged.override.message
+               ? merged.override.message
+               : staleEnabled && merged.staleMessage
+               ? merged.staleMessage
+               : merged.message || defaultData.message;
       const messageBox = document.getElementById("message");
       messageBox.textContent = messageText;
       if (merged.urgent === true) messageBox.classList.add("urgent");
