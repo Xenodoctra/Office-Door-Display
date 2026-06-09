@@ -1,7 +1,11 @@
 {
+  "displayDate": "2026-06-09",
   "message": "Text or call if needed.",
   "urgent": false,
   "trainingNote": "Do not just provide a problem, provide the solution for the problem.",
+  "staleAfter": "10:00",
+  "staleStatus": "out",
+  "staleMessage": "Out of the office for the day. Please call or text if immediate need is necessary.",
   "override": {
     "enabled": false,
     "status": "",
