@@ -1,6 +1,48 @@
 {
-  "status": "Lunch",
-  "schedule": "0700 Vacation\n0900 Availalbe\n1200 Lunch\n1230 Available\nOut of office",
-  "message": "Keeping the AC in come in if the door is closed"
+  "message": "Text or call if needed.",
+  "urgent": false,
+  "trainingNote": "Training note: Be clear, calm, and brief on the radio.",
+  "override": {
+    "enabled": false,
+    "status": "",
+    "message": ""
+  },
+  "scheduleItems": [
+    {
+      "start": "07:00",
+      "end": "09:00",
+      "status": "available",
+      "label": "Available"
+    },
+    {
+      "start": "09:00",
+      "end": "10:00",
+      "status": "meeting",
+      "label": "Meeting"
+    },
+    {
+      "start": "10:00",
+      "end": "12:00",
+      "status": "available",
+      "label": "Available"
+    },
+    {
+      "start": "12:00",
+      "end": "13:00",
+      "status": "lunch",
+      "label": "Lunch"
+    },
+    {
+      "start": "13:00",
+      "end": "15:00",
+      "status": "chief",
+      "label": "Meeting with Fire Chief"
+    },
+    {
+      "start": "15:00",
+      "end": "23:59",
+      "status": "day",
+      "label": "Out for Day"
+    }
+  ]
 }
- 
