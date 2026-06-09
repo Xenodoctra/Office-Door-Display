@@ -6,6 +6,7 @@
   "staleAfter": "10:00",
   "staleStatus": "outofOfficeForDay",
   "staleMessage": "Out of the office for the day. Please call or text if immediate need is necessary.",
+  "staleSchedule": "07:00 - 15:00  Out of Office",
   "override": {
     "enabled": false,
     "status": "",
