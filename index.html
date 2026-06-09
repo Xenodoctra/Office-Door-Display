@@ -249,7 +249,13 @@
            applyStatus("out");
       }
 
-      document.getElementById("schedule").innerHTML = buildScheduleHtml(merged.scheduleItems, currentItem);
+      if (staleEnabled && !overrideEnabled) {
+           document.getElementById("schedule").innerHTML =
+                `<span class="current-line">07:00 - 15:00  Out of Office</span>`;
+      } else {
+           document.getElementById("schedule").innerHTML =
+                buildScheduleHtml(merged.scheduleItems, currentItem);
+      }
 
      const messageText =
           overrideEnabled && merged.override.message
