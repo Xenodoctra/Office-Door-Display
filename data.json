@@ -37,7 +37,8 @@
       "status": "chief",
       "label": "Meeting with Fire Chief"
     },
-       "start": "12:30",
+    {
+      "start": "12:30",
       "end": "13:00",
       "status": "available",
       "label": "Available"
