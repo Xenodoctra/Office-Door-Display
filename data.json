@@ -33,15 +33,9 @@
     },
     {
       "start": "13:00",
-      "end": "14:00",
+      "end": "15:00",
       "status": "chief",
       "label": "Meeting with Fire Chief"
-    },
-    {
-      "start": "12:30",
-      "end": "13:00",
-      "status": "available",
-      "label": "Available"
     },
     {
       "start": "15:00",
