@@ -1,5 +1,5 @@
 {
-  "displayDate": "2026-06-10",
+  "displayDate": "2026-06-11",
   "message": "Text or call if needed.",
   "urgent": false,
   "trainingNote": "Do not just provide a problem, provide the solution for the problem.",
@@ -15,15 +15,9 @@
   "scheduleItems": [
     {
       "start": "07:00",
-      "end": "09:30",
+      "end": "11:30",
       "status": "available",
       "label": "Available"
-    },
-    {
-      "start": "09:30",
-      "end": "11:30",
-      "status": "vacation",
-      "label": "Vacation"
     },
     {
       "start": "11:30",
@@ -33,15 +27,20 @@
     },
     {
       "start": "12:30",
-      "end": "14:00",
+      "end": "13:00",
       "status": "available",
       "label": "Available"
     },
     {
-      "start": "14:00",
-      "end": "15:00",
+      "start": "13:00",
+      "end": "14:00",
       "status": "chief",
       "label": "Meeting with Fire Chief"
+    },
+       "start": "12:30",
+      "end": "13:00",
+      "status": "available",
+      "label": "Available"
     },
     {
       "start": "15:00",
