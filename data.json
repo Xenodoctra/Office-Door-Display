@@ -26,8 +26,14 @@
       "label": "Training"
     },
     {
+      "start": "08:30",
+      "end": "09:30",
+      "status": "available",
+      "label": "Available"
+    },
+    {
       "start": "09:30",
-      "end": "10:30",
+      "end": "11:30",
       "status": "meeting"
       "label": "Meeting"
     },
