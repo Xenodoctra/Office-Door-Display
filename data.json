@@ -1,5 +1,5 @@
 {
-  "displayDate": "2026-06-12",
+  "displayDate": "2026-06-15",
   "message": "Door closed to keep the cold air in. Feel free to come in.",
   "urgent": false,
   "trainingNote": "Do not just provide a problem, provide the solution for the problem.",
@@ -14,28 +14,22 @@
   },
   "scheduleItems": [
     {
-      "start": "07:00",
-      "end": "07:30",
-      "status": "available",
-      "label": "Available"
-    },
-    {
       "start": "07:30",
       "end": "08:30",
-      "status": "training",
-      "label": "Training"
+      "status": "available",
+      "label": "Available"
     },
     {
       "start": "08:30",
       "end": "09:30",
-      "status": "available",
-      "label": "Available"
+      "status": "meeting",
+      "label": "Meeting"
     },
     {
       "start": "09:30",
       "end": "11:30",
-      "status": "meeting",
-      "label": "Meeting"
+      "status": "available",
+      "label": "Available"
     },
     {
       "start": "11:30",
@@ -45,7 +39,7 @@
     },
     {
       "start": "12:30",
-      "end": "15:00",
+      "end": "15:30",
       "status": "available",
       "label": "Available"
     },
@@ -53,7 +47,7 @@
       "start": "15:00",
       "end": "23:59",
       "status": "day",
-      "label": "Out for The weekend, see you Monday!"
+      "label": "Out for day. Back 07:00"
     }
   ]
 }
