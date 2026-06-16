@@ -15,7 +15,7 @@
   "scheduleItems": [
     {
       "start": "07:30",
-      "end": "08:30",
+      "end": "10:00",
       "status": "available",
       "label": "Available"
     },
