@@ -36,11 +36,12 @@
       "end": "15:00",
       "status": "chief",
       "label": "Meeting with Fire Chief"
+    },
     {
       "start": "15:00",
       "end": "23:59",
       "status": "day",
       "label": "Out for day. Back 07:00"
-    },
+    }
   ]
 }
