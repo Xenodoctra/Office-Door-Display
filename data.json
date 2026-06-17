@@ -1,5 +1,5 @@
 {
-  "displayDate": "2026-06-16",
+  "displayDate": "2026-06-17",
   "message": "Door closed to keep the cold air in. Feel free to come in.",
   "urgent": false,
   "trainingNote": "Do not just provide a problem, provide the solution for the problem.",
@@ -14,16 +14,10 @@
   },
   "scheduleItems": [
     {
-      "start": "07:30",
-      "end": "10:00",
+      "start": "07:00",
+      "end": "11:00",
       "status": "available",
       "label": "Available"
-    },
-    {
-      "start": "10:00",
-      "end": "11:30",
-      "status": "meeting",
-      "label": "Meeting in other building"
     },
     {
       "start": "11:30",
