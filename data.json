@@ -1,5 +1,5 @@
 {
-  "displayDate": "2026-07-06",
+  "displayDate": "2026-07-07",
   "message": "Door closed to keep the cold air in. Feel free to come in.",
   "urgent": false,
   "trainingNote": "Do not just provide a problem, provide the solution for the problem.",
@@ -26,10 +26,10 @@
       "label": "Lunch"
     },
     {
-      "start": "13:00",
+      "start": "12:30",
       "end": "15:00",
-      "status": "vacation",
-      "label": "Dentist"
+      "status": "available",
+      "label": "Available"
     },
     {
       "start": "15:00",
