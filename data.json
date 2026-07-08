@@ -5,7 +5,7 @@
   "trainingNote": "Do not just provide a problem, provide the solution for the problem.",
   "staleAfter": "10:00",
   "staleStatus": "outofOfficeForDay",
-  "staleMessage": "Out of the office for the day. Please call or text if immediate need is necessary.",
+  "staleMessage": "There are two ways of spreading light: to be the candle or the mirror that reflects it.",
   "staleSchedule": "07:00 - 15:00  Out of Office",
   "override": {
     "enabled": false,
