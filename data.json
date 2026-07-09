@@ -5,7 +5,7 @@
   "trainingNote": "Do not just provide a problem, provide the solution for the problem.",
   "staleAfter": "10:00",
   "staleStatus": "outofOfficeForDay",
-  "staleMessage": "There are two ways of spreading light: to be the candle or the mirror that reflects it.",
+  "staleMessage": "What you do makes a difference, and you have to decide what kind of difference you want to make.",
   "staleSchedule": "07:00 - 15:00  Out of Office",
   "override": {
     "enabled": false,
