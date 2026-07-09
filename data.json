@@ -20,17 +20,22 @@
       "label": "Available"
     },
     {
-      "start": "12:00",
-      "end": "12:30",
+      "start": "11:00",
+      "end": "11:30",
       "status": "lunch",
       "label": "Lunch"
     },
     {
-      "start": "12:30",
-      "end": "15:00",
+      "start": "11:30",
+      "end": "13:00",
       "status": "available",
       "label": "Available"
     },
+    {
+      "start": "13:00",
+      "end": "15:00",
+      "status": "chief",
+      "label": "Meeting with Fire Chief"
     {
       "start": "15:00",
       "end": "23:59",
