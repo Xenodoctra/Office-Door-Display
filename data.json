@@ -1,5 +1,5 @@
 {
-  "displayDate": "2026-07-13",
+  "displayDate": "2026-07-14",
   "message": "Door closed to keep the cold air in. Feel free to come in.",
   "urgent": false,
   "trainingNote": "Do not just provide a problem, provide the solution for the problem.",
@@ -14,10 +14,16 @@
   },
   "scheduleItems": [
     {
-      "start": "07:00",
-      "end": "12:00",
+      "start": "08:00",
+      "end": "10:00",
       "status": "available",
       "label": "Available"
+    },
+    {
+      "start": "10:00",
+      "end": "11:00",
+      "status": "meeting",
+      "label": "Meeting"
     },
     {
       "start": "11:00",
@@ -27,15 +33,9 @@
     },
     {
       "start": "11:30",
-      "end": "13:00",
+      "end": "16:00",
       "status": "available",
       "label": "Available"
-    },
-    {
-      "start": "13:00",
-      "end": "15:00",
-      "status": "chief",
-      "label": "Meeting with Fire Chief"
     },
     {
       "start": "15:00",
