@@ -1,5 +1,5 @@
 {
-  "displayDate": "2026-07-14",
+  "displayDate": "2026-07-15",
   "message": "Door closed to keep the cold air in. Feel free to come in.",
   "urgent": false,
   "trainingNote": "Do not just provide a problem, provide the solution for the problem.",
@@ -14,16 +14,10 @@
   },
   "scheduleItems": [
     {
-      "start": "08:00",
-      "end": "10:00",
+      "start": "07:00",
+      "end": "11:30",
       "status": "available",
       "label": "Available"
-    },
-    {
-      "start": "10:00",
-      "end": "11:30",
-      "status": "meeting",
-      "label": "Meeting with Captain Garriot"
     },
     {
       "start": "11:30",
@@ -32,8 +26,15 @@
       "label": "Lunch"
     },
     {
-      "start": "11:30",
-      "end": "16:00",
+      "start": "12:00",
+      "end": "13:00",
+      "status": "meeting",
+      "label": "Meeting with Captain Garriot"
+    },
+   
+    {
+      "start": "13:30",
+      "end": "15:00",
       "status": "available",
       "label": "Available"
     },
