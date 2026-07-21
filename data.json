@@ -1,5 +1,5 @@
 {
-  "displayDate": "2026-07-16",
+  "displayDate": "2026-07-21",
   "message": "Door closed to keep the cold air in. Feel free to come in.",
   "urgent": false,
   "trainingNote": "Do not just provide a problem, provide the solution for the problem.",
@@ -14,10 +14,16 @@
   },
   "scheduleItems": [
     {
-      "start": "08:300",
+      "start": "07:00",
+      "end": "10:00",
+      "status": "out",
+      "label": "Off Site Groves Road"
+    },
+    {
+      "start": "10:00",
       "end": "11:30",
-      "status": "available",
-      "label": "Available"
+      "status": "meeting",
+      "label": "Meeting"
     },
     {
       "start": "11:30",
@@ -27,14 +33,7 @@
     },
     {
       "start": "12:00",
-      "end": "13:00",
-      "status": "chief",
-      "label": "Meeting with Chief"
-    },
-   
-    {
-      "start": "13:30",
-      "end": "16:30",
+      "end": "15:00",
       "status": "available",
       "label": "Available"
     },
