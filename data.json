@@ -6,7 +6,7 @@
   "staleAfter": "10:00",
   "staleStatus": "outofOfficeForDay",
   "staleMessage": "What you do makes a difference, and you have to decide what kind of difference you want to make.",
-  "staleSchedule": "07:00 - 15:00  Out of Office",
+  "staleSchedule": "07:00 - 15:00  Surgery off for the rest of the week",
   "override": {
     "enabled": false,
     "status": "",
