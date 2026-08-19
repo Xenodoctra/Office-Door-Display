@@ -1,5 +1,5 @@
 {
-  "displayDate": "2026-08-17",
+  "displayDate": "2026-08-19",
   "message": "Door closed to keep the cold air in. Feel free to come in.",
   "urgent": false,
   "trainingNote": "Do not just provide a problem, provide the solution for the problem.",
@@ -22,8 +22,8 @@
     {
       "start": "10:30",
       "end": "12:00",
-      "status": "Fire Chief Office",
-      "label": "chief"
+      "status": "Training Office",
+      "label": "meeting"
     },
     {
       "start": "12:00",
