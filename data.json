@@ -1,5 +1,5 @@
 {
-  "displayDate": "2026-08-19",
+  "displayDate": "2026-08-20",
   "message": "Door closed to keep the cold air in. Feel free to come in.",
   "urgent": false,
   "trainingNote": "Do not just provide a problem, provide the solution for the problem.",
@@ -15,15 +15,9 @@
   "scheduleItems": [
     {
       "start": "07:00",
-      "end": "10:30",
-      "status": "Available",
-      "label": "In Office"
-    },
-    {
-      "start": "10:30",
-      "end": "12:00",
-      "status": "Training Office",
-      "label": "meeting"
+      "end": "11:30",
+      "status": "Offsite",
+      "label": "FAO and Groves"
     },
     {
       "start": "12:00",
