@@ -14,7 +14,7 @@
   },
   "scheduleItems": [
     {
-      "start": "07:00",
+      "start": "08:00",
       "end": "10:30",
       "status": "available",
       "label": "Available"
@@ -38,10 +38,10 @@
       "label": "Available"
     },
     {
-      "start": "13:00",
+      "start": "14:00",
       "end": "16:00",
-      "status": "fire chief",
-      "label": "Fire Chiefs Office"
+      "status": "vacation",
+      "label": "Vacation"
     },
     {
       "start": "16:00",
