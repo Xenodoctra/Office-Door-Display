@@ -1,5 +1,5 @@
 {
-  "displayDate": "2026-09-02",
+  "displayDate": "2026-09-010",
   "message": "Door closed to keep the cold air in. Feel free to come in.",
   "urgent": false,
   "trainingNote": "Do not just provide a problem, provide the solution for the problem.",
@@ -13,12 +13,6 @@
     "message": ""
   },
   "scheduleItems": [
-    {
-      "start": "07:00",
-      "end": "07:30",
-      "status": "workout",
-      "label": "Working out"
-    
     {    
       "start": "07:30",
       "end": "11:30",
@@ -43,5 +37,5 @@
       "status": "day",
       "label": "Out for day."
     }
-  ]
+    }
 }
