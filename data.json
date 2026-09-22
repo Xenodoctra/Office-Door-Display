@@ -15,16 +15,28 @@
   "scheduleItems": [
     {    
       "start": "07:00",
-      "end": "09:30",
-      "status": "offsite",
-      "label": "Offsite"
+      "end": "07:30",
+      "status": "workout",
+      "label": "Working Out"
     },
     {
-      "start": "09:30",
-      "end": "11:30",
+      "start": "07:30",
+      "end": "09:00",
       "status": "available",
       "label": "Available"
     },
+    {
+      "start": "09:00",
+      "end": "09:30",
+      "status": "meeting",
+      "label": "Meeting"
+    }
+    {
+      "start": "09:30",
+      "end": "1:30",
+      "status": "available",
+      "label": "Available"
+    }
     {
       "start": "11:30",
       "end": "12:00",
@@ -33,15 +45,9 @@
     },
     {
       "start": "12:00",
-      "end": "13:00",
+      "end": "15:00",
       "status": "available",
       "label": "Available"
-    },
-    {
-      "start": "13:00",
-      "end": "15:00",
-      "status": "chief",
-      "label": "Fire Chief's Office"
     },
     {
       "start": "16:00",
