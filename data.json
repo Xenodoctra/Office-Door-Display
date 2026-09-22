@@ -51,7 +51,7 @@
       "label": "Available"
     },
     {
-      "start": "16:00",
+      "start": "15:00",
       "end": "23:59",
       "status": "day",
       "label": "Out for day."
