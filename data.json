@@ -31,13 +31,13 @@
       "end": "09:30",
       "status": "meeting",
       "label": "Meeting"
-    }
+    },
     {
       "start": "09:30",
       "end": "1:30",
       "status": "available",
       "label": "Available"
-    }
+    },
     {
       "start": "11:30",
       "end": "12:00",
