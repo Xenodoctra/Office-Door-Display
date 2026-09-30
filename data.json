@@ -21,15 +21,9 @@
     },
     {
       "start": "07:30",
-      "end": "09:00",
+      "end": "09:300",
       "status": "available",
       "label": "Available"
-    },
-    {
-      "start": "09:00",
-      "end": "09:30",
-      "status": "meeting",
-      "label": "Meeting"
     },
     {
       "start": "09:30",
